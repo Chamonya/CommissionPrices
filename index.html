@@ -1,71 +1,195 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link href="main.css" rel="stylesheet" />
+    <title>VioletGarden's Commission Calculator</title>
+    <meta charset="UTF-8" />
+  </head>
 
-<head>
-	<link href="./main.css" rel="stylesheet">
-	<script src="./main.js"></script>
-	<title>VioletGarden's Commission Calculator</title>
-	<meta charset="UTF-8" />
-</head>
+  <body onload="loop()">
+    <script src="./main.js" type="text/javascript"></script>
+    <div id="container">
+      <div id="example">
+        <img src="src/img/MysaExample_BG.png" id="bgImg" width="200" />
+        <img
+          src="src/img/MysaExample_Color.png"
+          id="colorImg"
+          width="200"
+          hidden
+        />
+        <img
+          src="src/img/MysaExample_CellShading.png"
+          id="cellShadeImg"
+          width="200"
+          hidden
+        />
+        <img
+          src="src/img/MysaExample_SoftShading.png"
+          id="softShadeImg"
+          width="200"
+          hidden
+        />
+        <img src="src/img/MysaExample_Sketch.png" id="sketchImg" width="200" />
+        <img
+          src="src/img/MysaExample_Line.png"
+          id="lineartImg"
+          width="200"
+          hidden
+        />
+      </div>
+      <div id="exampleText">(Quality Example)<br /></div>
+      <div id="calculator">
+        <center>
+          <font size="5">Base</font><br />
+          <select name="basePrice" id="basePrice" onchange="loop()">
+            <option value="blank">---</option>
+            <option value="fullbody">Fullbody ($15)</option>
+            <option value="kneeUp">Knee Up ($10)</option>
+            <option value="bust">Bust ($8)</option>
+            <option value="headshot">Headshot ($5)</option>
+          </select>
+        </center>
+        <br />
+        <hr />
+        <p></p>
+        <center><font size="5">Quality</font></center>
+        <br />
+        <input
+          type="radio"
+          id="lineStyle"
+          name="lineStyle"
+          value="sketch"
+          checked
+          onchange="loop()"
+        />
+        Sketch (Base)<br />
+        <input
+          type="radio"
+          id="lineStyle"
+          name="lineStyle"
+          value="lineart"
+          onchange="loop()"
+        />
+        Lineart (+50%)<br />
+        <input
+          class="checkbox"
+          type="checkbox"
+          id="colorCheck"
+          onchange="loop()"
+        />
+        Color (+40%)<br />
+        <input
+          class="checkbox"
+          type="checkbox"
+          id="shadingCheck"
+          onchange="loop()"
+        />
+        Shading (+60-90%)<br />
+        <div id="shadingDiv" hidden>
+          &nbsp;&nbsp;<input
+            type="radio"
+            id="shadingStyle"
+            name="shadingStyle"
+            value="cell"
+            checked
+            onclick="loop()"
+          />
+          Cell Shading (+70%)<br />
+          &nbsp;&nbsp;<input
+            type="radio"
+            id="shadingStyle"
+            name="shadingStyle"
+            value="soft"
+            onclick="loop()"
+          />
+          Soft Shading (+80%)<br />
+        </div>
 
-<body>
-	<div id="container">
-		<div id="example">
-			<img src="src/img/MysaExample_BG.png" id="bgImg" width="200"/>
-			<img src="src/img/MysaExample_Color.png" id="colorImg" width="200" hidden/>
-			<img src="src/img/MysaExample_CellShading.png" id="cellShadeImg" width="200" hidden/>
-			<img src="src/img/MysaExample_SoftShading.png" id="softShadeImg" width="200" hidden/>
-			<img src="src/img/MysaExample_Sketch.png" id="sketchImg" width="200"/>
-			<img src="src/img/MysaExample_Line.png" id="lineartImg" width="200" hidden/>
-		</div>
-		<div id="exampleText">
-			(Quality Example)<br>
-		</div>
-		<div id="calculator">
-			<center><font size=5>Base</font><br>
-			<select name="basePrice" id="basePrice">
-				<option value="fullbody">Fullbody ($13)</option>
-				<option value="kneeUp">Knee Up ($10)</option>
-				<option value="bust">Bust ($8)</option>
-				<option value="headshot">Headshot ($5)</option>
-				</select></center>
-			<br><hr><p></p>
-			<center><font size=5>Quality</font></center>
-			<br>
-			<input type="radio" id="lineStyle" name="lineStyle" value="sketch" checked> Sketch (Base)<br>
-			<input type="radio" id="lineStyle" name="lineStyle" value="lineart"> Lineart (+50%)<br>
-			<input class="checkbox" type="checkbox" id="colorCheck"> Color (+40%)<br>
-			<input class="checkbox" type="checkbox" id="shadingCheck" onchange="OnShadingChecked(this, shadingDiv)"/> Shading (+60-90%)<br>
-			<div id="shadingDiv" hidden>
-				&nbsp;&nbsp;<input type="radio" id="shadingStyle" name="shadingStyle" value="cell" checked> Cell Shading (+60%)<br>
-				&nbsp;&nbsp;<input type="radio" id="shadingStyle" name="shadingStyle" value="soft"> Soft Shading (+90%)<br>
-			</div>
-
-			<br><hr><p></p>
-			<center><font size=5>Extras</font></center><br>
-			<input class="checkbox" type="checkbox" id="addCharsCheck"> Additional Character(s)<br>
-			<div id="charDiv" hidden>
-				&nbsp;&nbsp;Custom Characters: <input class="textbox" type="number" id="customCharsAmt" name="customCharsAmt" min="0" defaultValue="0" placeholder="0"/> (+50%/character of Quality Price)<br>
-				&nbsp;&nbsp;<input class="checkbox" type="checkbox" id="cloverCheck"> Clover (+40% of Quality Price)<br>
-				&nbsp;&nbsp;<input class="checkbox" type="checkbox" id="mysaCheck"> Mysa (+40% of Quality Price)<br>
-			</div>
-			<input class="checkbox" type="checkbox" id="backgroundCheck"> Background (+$12-35)<br>
-			<div id="backgroundDiv" hidden>
-					&nbsp;&nbsp;<input type="radio" id="backgroundComplexity" name="backgroundComplexity" value="simple" checked> Simple BG (+$12)<br>
-					&nbsp;&nbsp;<input type="radio" id="backgroundComplexity" name="backgroundComplexity" value="detailed"> Detailed BG (+$35)<br>
-			</div>
-			<input class="checkbox" type="checkbox" id="internalCheck"> Internal View/Extreme Closeup (+10% of Quality Price)<br>
-			<input class="checkbox" type="checkbox" id="excessiveCumCheck"> Excessive Liquids (+$10)<br>
-			<input class="checkbox" type="checkbox" id="extremeAltVerCheck"> Extreme Alternate Version Changes (+$10)<br>
-			<br><input class="checkbox" type="checkbox" id="panelCheck"> Additional Panel(s) (+75%/panel After Extras)<br>
-			<div id="panelDiv" hidden>
-				&nbsp;&nbsp;Amount of Panels: <input class="textbox" type="number" id="panelAmt" name="panelAmt" min="1" value="1" placeholder="1"/>
-			</div>
-		</div>
-		<div id="price">
-			<center>Price: $</center>
-		</div>
-	</div>
-</body>
-
+        <br />
+        <hr />
+        <p></p>
+        <center><font size="5">Extras</font></center>
+        <br />
+        <input class="checkbox" type="checkbox" id="addCharsCheck" /> Additional
+        Character(s)<br />
+        <div id="charDiv" hidden>
+          &nbsp;&nbsp;Custom Characters:
+          <input
+            class="textbox"
+            type="number"
+            id="customCharsAmt"
+            name="customCharsAmt"
+            min="0"
+            defaultValue="0"
+            placeholder="0"
+            onchange="loop()"
+          />
+          (+50%/character of Quality Price)<br />
+          &nbsp;&nbsp;<input
+            class="checkbox"
+            type="checkbox"
+            id="cloverCheck"
+            onchange="loop()"
+          />
+          Clover (+40% of Quality Price)<br />
+          &nbsp;&nbsp;<input
+            class="checkbox"
+            type="checkbox"
+            id="mysaCheck"
+            onchange="loop()"
+          />
+          Mysa (+40% of Quality Price)<br />
+        </div>
+        <input
+          class="checkbox"
+          type="checkbox"
+          id="backgroundCheck"
+          onchange="loop()"
+        />
+        Background (+$12-35)<br />
+        <div id="backgroundDiv" hidden>
+          &nbsp;&nbsp;<input
+            type="radio"
+            id="backgroundComplexity"
+            name="backgroundComplexity"
+            value="simple"
+            checked
+            onchange="loop()"
+          />
+          Simple BG (+$12)<br />
+          &nbsp;&nbsp;<input
+            type="radio"
+            id="backgroundComplexity"
+            name="backgroundComplexity"
+            value="detailed"
+            onchange="loop()"
+          />
+          Detailed BG (+$35)<br />
+        </div>
+        <input class="checkbox" type="checkbox" id="internalCheck" /> Internal
+        View/Extreme Closeup (+10% of Quality Price)<br />
+        <input class="checkbox" type="checkbox" id="excessiveCumCheck" />
+        Excessive Liquids (+$10)<br />
+        <input class="checkbox" type="checkbox" id="extremeAltVerCheck" />
+        Extreme Alternate Version Changes (+$10)<br />
+        <br /><input class="checkbox" type="checkbox" id="panelCheck" />
+        Additional Panel(s) (+75%/panel After Extras)<br />
+        <div id="panelDiv" hidden>
+          &nbsp;&nbsp;Amount of Panels:
+          <input
+            class="textbox"
+            type="number"
+            id="panelAmt"
+            name="panelAmt"
+            min="1"
+            value="1"
+            placeholder="1"
+          />
+        </div>
+      </div>
+      <div id="price">
+        <center>Price: $</center>
+      </div>
+    </div>
+  </body>
 </html>
