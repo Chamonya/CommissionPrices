@@ -1,48 +1,95 @@
-function updateExampleImg() {
-  // Todo
+function updateImg(imageName) {
+  var url;
+  switch (imageName) {
+    case "sketch":
+      url = 'https://lh3.google.com/u/0/d/1_sos09-ftqKykKt0sj58MAgFnYqr-NgT=w1359-h937-iv1';
+      break;
+    case "sketch_cell":
+      url = 'https://lh3.google.com/u/0/d/1vfilHNrhrGwZx7UPWpguhC82t2O4DsMN=w1920-h937-iv1';
+      break;
+    case "sketch_soft":
+      url = 'https://lh3.google.com/u/0/d/1eAsZorFxzbA3Xi7Xo29ubkvsAkazNTFu=w1920-h937-iv1';
+      break;
+    case "sketch_colour":
+      url = 'https://lh3.google.com/u/0/d/12znbj6NHNWNe3C275_WWPc22E7Qq2bEt=w1920-h937-iv1';
+      break;
+    case "sketch_colour_cell":
+      url = 'https://lh3.google.com/u/0/d/1J5tabSMtpC9y6_TFh8MZXO4SIFXZUdUr=w1920-h937-iv1';
+      break;
+    case "sketch_colour_soft":
+      url = 'https://lh3.google.com/u/0/d/1WoYrh-wBJlPvOqWFCDGgmqmCxtarKGfz=w1920-h937-iv1';
+      break;
+    case "line":
+      url = 'https://lh3.google.com/u/0/d/1TpokpX1CrDaZ3TBVQ7NZXdokd6RqhAIV=w1920-h937-iv1';
+      break;
+    case "line_cell":
+      url = 'https://lh3.google.com/u/0/d/1xk3-O2hPYCoYcvt57n_o7fhkMOWTRVPJ=w1920-h937-iv1';
+      break;
+    case "line_soft":
+      url = 'https://lh3.google.com/u/0/d/1wCk9dItkET5yCNksRrnHnfCGbERaSeZv=w1920-h937-iv1';
+      break;
+    case "line_colour":
+      url = 'https://lh3.google.com/u/0/d/1s_TA8J33l5bf_c6mT_f8wb--1wT-9kn9=w1920-h937-iv1';
+      break;
+    case "line_colour_cell":
+      url = 'https://lh3.google.com/u/0/d/1jFtLjfFb9NUndgX6pK2_K2T1s5icOXxu=w1920-h937-iv1';
+      break;
+    case "line_colour_soft":
+      url = 'https://lh3.google.com/u/0/d/1KMEKJHY4ShO6bCHbliwIG_1WThdP9I5e=w1920-h937-iv1';
+      break;
+    default:
+      url = 'https://lh3.google.com/u/0/d/1_sos09-ftqKykKt0sj58MAgFnYqr-NgT=w1359-h937-iv1';
+      break;
+  }
+  $('#bgImg').attr("src",url);
 }
 
-//rough workaround since codesandbox won't call functions onclick for some reason? I'm so confused lol
-function loop() {
-  // -- Variable Definition --
-  var shadingCheckbox = document.getElementById("shadingCheck");
-  var shadingDiv = document.getElementById("shadingDiv");
-  var shadingRadios = document.getElementsByName("shadingStyle");
-  var addCharsCheckbox = document.getElementById("addCharsCheck");
-  var addCharsDiv = document.getElementById("charDiv");
-  var backgroundCheckbox = document.getElementById("backgroundCheck");
-  var backgroundDiv = document.getElementById("backgroundDiv");
-  var backgroundRadios = document.getElementsByName("backgroundComplexity");
-  var panelCheckbox = document.getElementById("panelCheck");
-  var panelDiv = document.getElementById("panelDiv");
-  var baseDropdown = document.getElementById("basePrice");
-  var lineRadios = document.getElementsByName("lineStyle");
-  var colorCheck = document.getElementById("colorCheck");
-  var cloverCheck = document.getElementById("cloverCheck");
-  var mysaCheck = document.getElementById("mysaCheck");
-  var customCharsAmt = document.getElementById("customCharsAmt");
-  var internalCheck = document.getElementById("internalCheck");
-  var excessiveCumCheck = document.getElementById("excessiveCumCheck");
-  var extremeAltVerCheck = document.getElementById("extremeAltVerCheck");
-  var panelAmt = document.getElementById("panelAmt");
-  var priceText = document.getElementById("price");
-  var sketchImg = document.getElementById("sketchImg");
-  var lineartImg = document.getElementById("lineartImg");
-  var colorImg = document.getElementById("colorImg");
-  var cellShadingImg = document.getElementById("cellShadeImg");
-  var softShadingImg = document.getElementById("softShadeImg");
-  // -- Checkboxes for hidden elements --
-  if (shadingCheckbox.checked) {
+function showShading() {
+  if ($('#shadingCheck').is(':checked')) {
     shadingDiv.hidden = false;
+    $('#shadingCell').prop("checked", true);
   } else {
     shadingDiv.hidden = true;
+    $('#shadingCell').prop("checked", false);
+    $('#shadingSoft').prop("checked", false);
   }
+}
 
-  if (addCharsCheckbox.checked) {
-    addCharsDiv.hidden = false;
+function showChars() {
+  if ($('#addCharsCheck').is(':checked')) {
+    $('#charDiv').show('fast');
   } else {
-    addCharsDiv.hidden = true;
+    $('#charDiv').hide('fast');
   }
+}
+
+function showBackground() {
+  var backgroundCheckbox = document.getElementById("backgroundCheck");
+  var backgroundDiv = document.getElementById("backgroundDiv");
+  if (backgroundCheckbox.checked) {
+    backgroundDiv.hidden = false;
+    $('#backgroundSimple').prop("checked", true);
+  } else {
+    backgroundDiv.hidden = true;
+    $('#backgroundSimple').prop("checked", false);
+    $('#backgroundDetailed').prop("checked", false);
+  }
+}
+
+
+function loop() {
+  // -- Variable Definition --
+  var imagename;
+  var addCharsCheckbox = document.getElementById("addCharsCheck");
+  var backgroundCheckbox = document.getElementById("backgroundCheck");
+  var backgroundDiv = document.getElementById("backgroundDiv");
+  var panelCheckbox = document.getElementById("panelCheck");
+  var panelDiv = document.getElementById("panelDiv");
+  var customCharsAmt = document.getElementById("customCharsAmt");
+  var panelAmt = document.getElementById("panelAmt");
+  var priceText = document.getElementById("price");
+
+  // -- Checkboxes for hidden elements --
 
   if (backgroundCheckbox.checked) {
     backgroundDiv.hidden = false;
@@ -59,71 +106,34 @@ function loop() {
   // -- Actual price calculations --
 
   //Base Price
-  var basePrice = 0;
-  switch (baseDropdown.options[baseDropdown.selectedIndex].value) {
-    case "headshot":
-      basePrice = 5;
-      break;
-    case "bust":
-      basePrice = 8;
-      break;
-    case "kneeUp":
-      basePrice = 10;
-      break;
-    case "fullbody":
-      basePrice = 15;
-      break;
-    default:
-      basePrice = 0;
-      break;
-  }
+  var basePrice = parseInt($('#basePrice').val());
 
   //Quality Price
   var qualityPrice = basePrice;
   var qualityPerc = 0;
 
-  for (var i = 0, length = lineRadios.length; i < length; i++) {
-    if (lineRadios[i].checked) {
-      if (lineRadios[i].value === "lineart") {
-        qualityPerc += 0.5;
-        lineartImg.hidden = false;
-        sketchImg.hidden = true;
-      } else {
-        lineartImg.hidden = true;
-        sketchImg.hidden = false;
-      }
-    }
+  if ($('#sketch').is(':checked')) {
+    imagename="sketch"
   }
-  if (colorCheck.checked) {
-    qualityPerc += 0.4;
-    colorImg.hidden = false;
-  } else {
-    colorImg.hidden = true;
+  if ($('#line').is(':checked')){
+    qualityPerc += parseFloat($('#line').val());
+    imagename="line"
   }
-  if (shadingCheckbox.checked) {
-    for (var j = 0; j < shadingRadios.length; j++) {
-      if (shadingRadios[i].checked) {
-        switch (shadingRadios[i].value) {
-          case "cell":
-            qualityPerc += 0.6;
-            cellShadingImg.hidden = false;
-            softShadingImg.hidden = true;
-            break;
-          case "soft":
-            qualityPerc += 0.9;
-            cellShadingImg.hidden = true;
-            softShadingImg.hidden = false;
-            break;
-          default:
-            break;
-        }
-      }
-    }
-  } else {
-    cellShadingImg.hidden = true;
-    softShadingImg.hidden = true;
+  if ($('#colorCheck').is(':checked')) {
+    qualityPerc += parseFloat($('#colorCheck').val());
+    imagename= imagename + "_colour"
   }
-  qualityPrice = basePrice + basePrice * qualityPerc;
+
+  if ($('#shadingCell').is(':checked')) {
+    qualityPerc += parseFloat($('#shadingCell').val());
+    imagename = imagename + "_cell";
+  }
+  if ($('#shadingSoft').is(':checked')) {
+    qualityPerc += parseFloat($('#shadingSoft').val());
+    imagename = imagename + "_soft";
+  }
+
+  qualityPrice = basePrice + (basePrice * qualityPerc);
 
   //Extras Price
   var extrasPrice = qualityPrice;
@@ -132,39 +142,28 @@ function loop() {
 
   if (addCharsCheckbox.checked) {
     extrasPerc += customCharsAmt.value * 0.5;
-    if (cloverCheck.checked) {
-      extrasPerc += 0.4;
-    }
-    if (mysaCheck.checked) {
-      extrasPerc += 0.4;
+    if ($('#kamiCheck').is(':checked')) {
+      extrasPerc += parseFloat($('#kamiCheck').val());
     }
   }
-  if (backgroundCheckbox.checked) {
-    for (var l = 0; i < backgroundRadios.length; l++) {
-      if (backgroundRadios[i].checked) {
-        switch (backgroundRadios[i].value) {
-          case "simple":
-            extrasBonus += 12;
-            break;
-          case "detailed":
-            extrasBonus += 35;
-            break;
-          default:
-            break;
-        }
-      }
-    }
+
+  if ($('#backgroundSimple').is(':checked')) {
+    extrasBonus += parseFloat($('#backgroundSimple').val());
   }
-  if (internalCheck.checked) {
-    extrasPerc += 0.1;
+  if ($('#backgroundDetailed').is(':checked')) {
+    extrasBonus += parseFloat($('#backgroundDetailed').val());
   }
-  if (excessiveCumCheck.checked) {
-    extrasBonus += 10;
+  if ($('#internalCheck').is(':checked')) {
+    extrasPerc += parseFloat($('#internalCheck').val());
   }
-  if (extremeAltVerCheck.checked) {
-    extrasBonus += 10;
+  if ($('#excessiveCheck').is(':checked')) {
+    extrasBonus += parseFloat($('#excessiveCheck').val());
   }
-  extrasPrice = qualityPrice + qualityPrice * extrasPerc + extrasBonus;
+  if ($('#extremeAltVerCheck').is(':checked')) {
+    extrasBonus += parseFloat($('#extremeAltVerCheck').val());
+  }
+
+  extrasPrice = qualityPrice + (qualityPrice * extrasPerc) + extrasBonus;
 
   //After Extras
   var afterExtrasPerc = 0;
@@ -175,22 +174,8 @@ function loop() {
   //Finally, calculate price
   var price = extrasPrice + extrasPrice * afterExtrasPerc;
   price = price.toFixed(2);
-  priceText.innerHTML = `<center>Price:<br>$` + price.toString() + `</center>`;
+  priceText.innerHTML = '$' + price.toString();
+
+  updateImg(imagename);
 }
 
-//setInterval(loop, 100);
-
-//
-/*function change() {
-  alert("test2");
-}
-
-function OnShadingChecked(shadingCheckbox, shadingDiv) {
-  console.log("test");
-  if (shadingCheckbox.checked) {
-    shadingDiv.hidden = false;
-  }
-  else {
-    shadingDiv.hidden = true;
-  }
-}*/
