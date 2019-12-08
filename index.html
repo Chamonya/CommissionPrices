@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="./css/bootstrap.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" href="./css/bootstrap.css">-->
     <link href="./main.css" rel="stylesheet"/>
     <title>Chamonya's Commission Calculator</title>
     <meta charset="UTF-8"/>
@@ -22,9 +22,10 @@
                         <select class="form-control form-control-sm" name="basePrice" id="basePrice">
                             <option value="0">---</option>
                             <option value="12" >Fullbody ($12)</option>
+                            <option value="12" >Mawshot ($12)</option>
                             <option value="10" >Knee Up ($10)</option>
                             <option value="8" >Bust ($8)</option>
-                            <option value="5" >Headshot ($5)</option>
+                            <option value="7" >Headshot ($7)</option>
                         </select>
                         <h4 class="text-center">Quality</h4>
                         <div class="form-check">
@@ -41,7 +42,7 @@
                         </div>
                         <div class="form-check">
                             <input class="checkbox" type="checkbox" id="shadingCheck" onchange="showShading()" />
-                            <label>Shading (+60-90%)</label>
+                            <label>Shading (+70-90%)</label>
                         </div>
                         <div id="shadingDiv" hidden class="ml-4">
                             <div class="form-check">
@@ -49,8 +50,8 @@
                                 <label>Cell Shading (+70%)</label>
                             </div>
                             <div class="form-check">
-                                <input type="radio" id="shadingSoft" name="shadingStyle" value="0.8" />
-                                <label>Soft Shading (+80%)</label>
+                                <input type="radio" id="shadingSoft" name="shadingStyle" value="0.9" />
+                                <label>Soft Shading (+90%)</label>
                             </div>
                         </div>
                         <h4 class="text-center">Extras</h4>
@@ -73,16 +74,16 @@
                         </div>
                         <div class="form-check">
                             <input class="checkbox" type="checkbox" id="backgroundCheck" onchange="showBackground()"/>
-                            <label>Background (+$12-35)</label>
+                            <label>Background (+$15-$25)</label>
                         </div>
                         <div id="backgroundDiv" hidden class="ml-4">
                             <div class="form-check">
-                                <input type="radio" id="backgroundSimple" name="backgroundComplexity" value="12"/>
-                                <label>Simple BG (+$12)</label>
+                                <input type="radio" id="backgroundSimple" name="backgroundComplexity" value="15"/>
+                                <label>Simple BG (+$15)</label>
                             </div>
                             <div class="form-check">
-                                <input type="radio" id="backgroundDetailed" name="backgroundComplexity" value="35"/>
-                                <label>Detailed BG (+$35)</label>
+                                <input type="radio" id="backgroundDetailed" name="backgroundComplexity" value="25"/>
+                                <label>Detailed BG (+$25)</label>
                             </div>
                         </div>
                         <div class="form-check">
@@ -109,12 +110,12 @@
                             </div>
                         </div>
 
-                    <div class="row justify-content-center">
-                        <span class="text-centered">Price:</span>
-                    </div>
-                    <div class="row justify-content-center">
-                        <span id="price" class="text-centered"></span>
-                    </div>
+                        <div class="row justify-content-center">
+                            <span class="text-centered">Price:</span>
+                        </div>
+                        <div class="row justify-content-center">
+                            <span id="price" class="text-centered"></span>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -126,17 +127,17 @@
             </div>
         </div>
 
-            </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </div>
 </body>
 </html>
